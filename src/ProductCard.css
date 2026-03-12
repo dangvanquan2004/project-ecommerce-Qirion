@@ -1,0 +1,8 @@
+.product-card h4 {
+  height: 45px; /* Giới hạn chiều cao tiêu đề */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Chỉ hiện tối đa 2 dòng, quá thì hiện dấu ... */
+  -webkit-box-orient: vertical;
+  margin: 10px 0;
+}

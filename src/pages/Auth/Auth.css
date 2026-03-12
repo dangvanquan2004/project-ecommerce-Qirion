@@ -1,0 +1,191 @@
+/* Nền chung cho trang đăng nhập/đăng ký */
+.auth-container {
+  width: 100%;
+  min-height: 100vh; /* Chiếm toàn bộ màn hình */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px;
+}
+
+/* Cái thẻ (Card) chứa form */
+.auth-form {
+  background: white;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px; /* Không quá to */
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1); /* Đổ bóng sâu tạo chiều sâu */
+  text-align: center;
+}
+
+.auth-form h2 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.auth-desc {
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+/* Các ô nhập liệu */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s;
+  background: #f8f9fa;
+}
+
+.form-group input:focus {
+  border-color: #2563eb; /* Màu xanh thương hiệu */
+  background: white;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Nút Submit */
+.auth-btn{
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  color: white;
+  border: none;
+  border-radius: 30px; /* Bo tròn nút */
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: transform 0.2s;
+}
+
+
+
+/* Đường link chuyển đổi */
+.auth-link {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.auth-link a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-link a:hover {
+  text-decoration: underline;
+}
+
+/* --- PHẦN MỚI THÊM: SHOW/HIDE PASSWORD --- */
+.password-input-wrapper {
+  position: relative; /* Để icon mắt căn theo khung này */
+}
+
+/* Icon mắt nằm đè lên input */
+.password-toggle-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #94a3b8; /* Màu xám nhạt */
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.password-toggle-icon:hover {
+  color: #2563eb;
+}
+
+/* Chừa chỗ bên phải input để chữ không đè lên icon mắt */
+.password-input-wrapper input {
+  padding-right: 45px; 
+}
+
+/* --- PHẦN MỚI THÊM: SOCIAL LOGIN --- */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 25px 0;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.divider::before, .divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.divider span {
+  padding: 0 10px;
+}
+
+
+
+
+/* Container để căn giữa 2 nút */
+.social-buttons {
+  display: flex;
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  gap: 20px; /* Khoảng cách giữa 2 nút */
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* Style chung cho nút tròn */
+.social-icon-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Biến thành hình tròn */
+  border: none;
+  font-size: 24px; /* Kích thước icon bên trong */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Hiệu ứng khi di chuột vào (Nảy lên nhẹ) */
+.social-icon-btn:hover {
+  transform: translateY(-3px);
+ 
+}
+
+/* 1. Nút Google: Nền trắng, Icon màu đỏ (Style chuẩn Google) */
+.social-icon-btn.google {
+  background: white;
+  border: 1px solid #e2e8f0;
+  color: #DB4437; /* Màu đỏ Google */
+}
+
+/* 2. Nút Facebook: Nền xanh, Icon màu trắng (Style chuẩn Facebook) */
+.social-icon-btn.facebook {
+  background: #1877f2; /* Màu xanh Facebook */
+  color: white;
+}

@@ -1,0 +1,91 @@
+/* CONTAINER CHUNG */
+.banner-section {
+  width: 100%;
+  background-color: #f0f2f5; /* Màu nền xám nhẹ làm nổi bật banner */
+  padding-bottom: 20px;
+  overflow: hidden; /* Tránh bị thanh cuộn ngang */
+}
+
+.banner-container {
+  max-width: 1200px; /* Khớp với Header và Nav */
+  margin: 0 auto;
+  padding: 10px 15px; /* Cách trên dưới 1 chút */
+}
+
+/* --- 1. STYLE BANNER LỚN --- */
+.main-slider {
+  margin-bottom: 15px; /* Khoảng cách giữa banner lớn và nhỏ */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.main-banner-img {
+  width: 100%;
+  height: auto; /* Tự động chỉnh theo tỉ lệ ảnh */
+  min-height: 300px; /* Đảm bảo chiều cao tối thiểu trên PC */
+  object-fit: cover;
+  display: block;
+}
+
+/* Chỉnh nút chấm tròn (Dots) của slider lớn */
+.slick-dots {
+  bottom: 15px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: white;
+  opacity: 0.7;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #ff3a3a; /* Chấm active màu đỏ */
+  opacity: 1;
+}
+
+/* --- 2. STYLE BANNER NHỎ --- */
+.sub-slider {
+  margin: 0 -10px; /* Mẹo để bù trừ padding của từng item */
+}
+
+.sub-slide-item {
+  padding: 0 10px; /* Tạo khoảng hở giữa các banner nhỏ */
+}
+
+.sub-banner-img {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  display: block;
+}
+
+/* Hiệu ứng hover vào banner nhỏ: Nổi lên */
+.sub-slide-item:hover .sub-banner-img {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* Mũi tên điều hướng (Next/Prev) */
+.slick-prev, .slick-next {
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: #333; /* Màu mũi tên */
+  font-size: 24px;
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+  .main-banner-img {
+    min-height: auto; /* Trên mobile để chiều cao tự do */
+  }
+  
+  .banner-container {
+    padding: 10px 5px; /* Giảm lề trên mobile */
+  }
+}

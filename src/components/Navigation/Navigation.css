@@ -1,0 +1,335 @@
+/* THANH NAVIGATION MÀU XANH */
+.bottom-nav {
+  background: #2563eb; /* Màu xanh chủ đạo */
+  height: 50px;
+  position: relative;
+  z-index: 900; /* Thấp hơn Header dính nhưng cao hơn Banner */
+  width: 100%;
+}
+
+.nav-content {
+ max-width: 1200px; /* Phải khớp số với Header */
+  margin: 0 auto;    /* Căn giữa */
+  padding: 0 15px;   /* Padding giống hệt */
+  
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 30px;
+
+
+}
+
+
+/* 1. STYLE CHO NÚT DANH MỤC (TRẮNG) */
+.category-dropdown-wrapper {
+  position: relative; /* Để cái list xổ xuống căn theo nút này */
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.category-btn {
+  background: white;
+  color: #2563eb;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.category-btn:hover {
+  background: #f1f5f9;
+}
+
+/* 2. STYLE CHO DANH SÁCH XỔ XUỐNG */
+.category-list {
+  position: absolute;
+  top: 100%; /* Nằm ngay dưới nút */
+  left: 0;
+  width: 280px; /* Độ rộng menu */
+  background: white;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  list-style: none;
+  padding: 10px 0;
+  
+  /* ẨN ĐI MẶC ĐỊNH */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+/* HIỆN RA KHI HOVER VÀO WRAPPER */
+.category-dropdown-wrapper:hover .category-list {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Từng mục trong danh sách */
+.category-item a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.category-item a:hover {
+  background: #eff6ff;
+  color: #2563eb;
+  padding-left: 25px; /* Hiệu ứng đẩy nhẹ sang phải */
+}
+
+.cat-item-icon {
+  font-size: 18px;
+  color: #64748b;
+  display: flex;
+}
+
+.category-item a:hover .cat-item-icon {
+  color: #2563eb;
+}
+
+/* 3. MENU NGANG BÊN PHẢI */
+.horizontal-menu {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.horizontal-menu li a {
+  color: white; /* Chữ màu trắng trên nền xanh */
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+  position: relative;
+}
+
+/* Hiệu ứng gạch chân khi hover menu ngang */
+.horizontal-menu li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: white;
+  transition: 0.3s;
+}
+
+.horizontal-menu li a:hover::after {
+  width: 100%;
+}
+
+/* --- RESPONSIVE CHO MOBILE (Màn hình nhỏ hơn 768px) --- */
+@media (max-width: 768px) {
+  .navbar-content {
+    padding: 0 10px; /* Giảm khoảng cách lề 2 bên */
+    gap: 10px;       /* Giảm khoảng cách giữa các phần tử */
+  }
+
+  /* Ẩn thanh tìm kiếm nếu quá chật (Hoặc bạn có thể giữ nếu muốn) */
+  .search-bar {
+    display: none; 
+    /* Hoặc muốn hiện thì dùng: max-width: 150px; */
+  }
+
+  /* Ẩn chữ "Giỏ hàng", "Đăng nhập", chỉ để lại Icon */
+  .icon-text {
+    display: none;
+  }
+  
+  .icon-item {
+    gap: 0; /* Icon đứng một mình không cần khoảng cách */
+  }
+  
+  /* Logo nhỏ lại xíu */
+  .logo-text {
+    font-size: 20px;
+  }
+  
+  .logo-img {
+    height: 30px;
+  }
+}
+
+
+
+/* --- THÊM PHẦN CSS CHO MOBILE OVERLAY (MENU TRƯỢT) --- */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Nền tối mờ */
+  z-index: 4000; /* Cao nhất đè lên tất cả */
+  
+  /* Mặc định ẩn */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Nội dung menu trượt từ trái sang */
+.mobile-menu-content {
+  width: 80%; /* Chiếm 80% màn hình */
+  max-width: 320px;
+  height: 100%;
+  background: white;
+  transform: translateX(-100%); /* Giấu sang trái */
+  transition: transform 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu-overlay.active .mobile-menu-content {
+  transform: translateX(0); /* Trượt ra */
+}
+
+/* Header của menu mobile */
+.mobile-menu-header {
+  background: #2563eb;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-menu-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+}
+
+/* List danh mục trên mobile */
+.mobile-cat-list {
+  list-style: none;
+  padding: 0;
+  overflow-y: auto; /* Cho phép cuộn dọc nếu danh mục dài */
+}
+
+.mobile-cat-list li a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #f1f1f1;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.mob-cat-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.mob-cat-icon {
+  color: #2563eb;
+  font-size: 18px;
+}
+
+.arrow-icon {
+  color: #ccc;
+  font-size: 12px;
+}
+
+/* --- XỬ LÝ RESPONSIVE & STICKY BUTTON --- */
+@media (max-width: 900px) {
+  /* Ẩn dropdown của PC đi */
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  /* Sticky cho nút Danh mục */
+  .category-dropdown-wrapper {
+    position: sticky; /* Ghim lại */
+    left: 0; /* Dính vào mép trái */
+    z-index: 10; /* Nổi lên trên các mục khác khi cuộn */
+    background: #2563eb; /* Cần có màu nền để che nội dung trôi qua dưới nó */
+    padding-right: 15px; /* Tạo khoảng cách với nội dung bên cạnh */
+    
+    /* Hiệu ứng bóng mờ bên phải để biết là nội dung đang trôi vào */
+    box-shadow: 5px 0 10px -5px rgba(0,0,0,0.2); 
+  }
+
+  .nav-content {
+    padding-left: 0; /* Bỏ padding trái để nút dính sát lề */
+  }
+
+  /* Chỉnh lại nút danh mục trên mobile cho gọn */
+  .category-btn {
+    height: 100%;
+    border-radius: 0; /* Vuông vức */
+    background: #2563eb; /* Nền xanh đồng bộ */
+    color: white; /* Chữ trắng */
+  }
+  
+  .category-btn:hover {
+    background: #1d4ed8;
+  }
+}
+
+/* --- RESPONSIVE CHO MOBILE --- */
+@media (max-width: 900px) {
+  .bottom-nav {
+    overflow-x: auto; /* Cho phép vuốt sang ngang */
+    white-space: nowrap; /* Không cho nội dung xuống dòng */
+    -webkit-overflow-scrolling: touch; /* Vuốt mượt trên iPhone */
+  }
+
+  .nav-content {
+    width: auto; /* Để nội dung tự do mở rộng theo chiều ngang */
+    padding: 0 10px;
+    gap: 15px;
+    justify-content: flex-start; /* Căn trái để bắt đầu vuốt */
+  }
+
+  /* Ẩn thanh cuộn xấu xí đi (nhưng vẫn vuốt được) */
+  .bottom-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Nút danh mục: Ẩn chữ "DANH MỤC...", chỉ hiện icon 3 gạch */
+  .category-btn span {
+    display: none;
+  }
+  
+  .category-btn {
+    padding: 0 10px; /* Thu gọn nút */
+  }
+
+  /* Menu ngang: Giữ nguyên để vuốt */
+  .horizontal-menu li a {
+    font-size: 13px; /* Chữ nhỏ lại xíu */
+    white-space: nowrap;
+  }
+}
